@@ -1,3 +1,4 @@
+import { memo } from "react"
 
 const Title = () => {
     console.log('1-title')
@@ -9,4 +10,4 @@ const Title = () => {
     )
 }
 
-export default Title
+export default memo(Title)

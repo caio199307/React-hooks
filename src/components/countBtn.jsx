@@ -1,3 +1,4 @@
+import { memo } from "react";
 
 const CountBtn = ({handleCount}) => {
     console.log('3-count BTN')
@@ -12,4 +13,4 @@ const CountBtn = ({handleCount}) => {
     )
 }
 
-export default CountBtn
+export default memo(CountBtn)

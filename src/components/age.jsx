@@ -1,3 +1,4 @@
+import { memo } from "react";
 
 const Age = ({age}) => {
     console.log('4-age')
@@ -9,4 +10,4 @@ const Age = ({age}) => {
     )
 }
 
-export default Age;
+export default memo(Age);
