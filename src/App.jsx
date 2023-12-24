@@ -1,47 +1,31 @@
-import { useState, useEffect } from "react"
-import BlockComponent from "./block"
+import { useState,  } from "react";
+import Title from './components/title'
+import Count from "./components/count";
+import CountBtn from "./components/countBtn";
+import Age from "./components/age";
+import AgeBtn from "./components/ageBtn";
 
 const App = () => {
-let [count, setCount] = useState(0)
-let [animal, setAnimal] = useState('dog')
-let [block, setBlock] = useState(false)
+    let [count, setCount] = useState(0)
+    let [age, setAge] = useState(10)
 
-const addOne = () => setCount(count +1)
-const restOne = () => setCount(count -1)
-const setZero = () => setCount(0)
+    const handleCount = () => {
+        setCount(count+1)
+    }
 
-useEffect(()=>{
+    const handleAge = () => {
+        setAge(age+1)
+    }
 
-
-  return ()=>{
-    console.log('Use effect count')
-}
-},[count])
-
-/* useEffect(()=>{
-  console.log(count)
-}, [count, animal]) */
-
-/* useEffect(()=>{
-  console.log(animal)
-}, [animal]) */
-
-  return(
-    <>
-      <h3>Count: {count}</h3>
-      <button onClick={addOne}>+1</button>
-      <button onClick={restOne}>-1</button>
-      <button onClick={setZero}>set to 0</button>
-      <hr />
-      <h3>{animal}</h3>
-      <button onClick={()=>setAnimal('cat')}>Change animal</button>
-      <hr />
-      {
-        block ? <BlockComponent></BlockComponent> : null
-      }
-      <button onClick={()=>{setBlock(!block)}}>Block</button>
-    </>
-  )
+    return(
+        <>
+            <Title/>
+            <Count count={count}></Count>
+            <CountBtn handleCount={handleCount}></CountBtn>
+            <Age age={age}></Age>
+            <AgeBtn handleAge={handleAge}></AgeBtn>
+        </>
+    )
 }
 
-export default App
+export default App;
