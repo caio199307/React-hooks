@@ -1,35 +1,27 @@
-import { useState, useCallback } from "react";
-import Title from './components/title'
-import Count from "./components/count";
-import CountBtn from "./components/countBtn";
-import Age from "./components/age";
-import AgeBtn from "./components/ageBtn";
+import { useRef, forwardRef } from "react"
 
 const App = () => {
-    let [count, setCount] = useState(0)
-    let [age, setAge] = useState(10)
-    
+    const textInput = useRef()
 
-
-    const handleCount = useCallback(() => {
-        setCount(count+1)
-    }, [count])
-    
-    
-
-    const handleAge = useCallback(() => {
-        setAge(age+1)
-    }, [age]) 
+    const triggerHandler =() => {
+    console.log(textInput.current.value)
+    }
 
     return(
         <>
-            <Title/>
-            <Count count={count}></Count>
-            <CountBtn handleCount={handleCount}></CountBtn>
-            <Age age={age}></Age>
-            <AgeBtn handleAge={handleAge}></AgeBtn>
+            <h1>Form:</h1>
+            <InputComponent ref={textInput}></InputComponent>
+            <button onClick={triggerHandler}>
+                Trigger
+            </button>
         </>
     )
 }
 
-export default App;
+const InputComponent = forwardRef((props, ref) => {
+    return <input type="text" ref={ref}/>
+})
+
+InputComponent.displayName = 'InputComponent'
+
+export default App
