@@ -8,7 +8,17 @@ const UserItem = () => {
 
     return(
         <>
-            user item
+            {context.activeState ? 
+                context.users.map(user => {
+                    return(
+                        <div key={user.id}>
+                            <div>Name: {user.name}</div>
+
+                        </div>
+                    )
+                })
+            : null}
+            <button onClick={context.setActive}>Show</button>
         </>
     )
 }
